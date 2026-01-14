@@ -1,3 +1,10 @@
 terraform.tfvars
-.DS_Store
+*.DS_Store
 **/.DS_Store
+os-trusted-cas
+set-up-grafana.txt
+set-up-k9s.txt
+notizen.txt
+.DS_Store
+/.terraform/*
+terraform.tfstate.backup
