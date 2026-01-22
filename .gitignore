@@ -8,3 +8,4 @@ notizen.txt
 .DS_Store
 /.terraform/*
 terraform.tfstate.backup
+node_modules

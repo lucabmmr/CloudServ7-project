@@ -28,7 +28,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: ./Webseite        # WICHTIG: hier liegt deine Dockerfile
+          context: ./Webseite        # hier liegt deine Dockerfile
           push: true
           tags: |
             fdai7814/express-web:latest
