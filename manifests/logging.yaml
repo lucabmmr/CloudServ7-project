@@ -4,9 +4,6 @@ metadata:
   name: loki-stack
   namespace: kube-system
 
-# see, e.g., https://docs.k3s.io/add-ons/helm
-# chart is deprecated TODO: move to loki
-
 spec:
   chart: loki-stack 
   repo: https://grafana.github.io/helm-charts 
@@ -16,11 +13,15 @@ spec:
   valuesContent: |-
     grafana:
       enabled: true
+      adminUser: admin
+      adminPassword: grafana
       service:
         type: LoadBalancer
+
     loki:
       persistence:
         enabled: true
         size: 10Gi
+        
     promtail:
       enabled: true
