@@ -9,7 +9,7 @@ on:
   workflow_dispatch:   # manuell auslösbar im GitHub UI
 
 jobs:
-  NodeJS Docker-Build Docker-Push:
+  nodejs-docker-build-push:
     runs-on: ubuntu-latest
 
     steps:
