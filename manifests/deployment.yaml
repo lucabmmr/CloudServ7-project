@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: web
-          image: fdai7814/express-web:1.1.0
+          image: fdai7814/express-web:1.0.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
