@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="top-nav">
+      <a class="navbar-brand" href="#" style="margin-left: 2%">ZIDD</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></dyaspan>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="./">Home</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-5">
+      <div
+        class="row justify-content-center"
+        style="width: 80%; text-align: center"
+      >
+        <nav class="navbar bg-light border-bottom">
+          <div class="container">
+            <span class="navbar-brand fw-bold">eduVPN</span>
+
+            <ul class="nav nav-tabs border-0 ms-auto" role="tablist">
+              <li class="nav-item">
+                <button
+                  class="nav-link active"
+                  data-bs-toggle="tab"
+                  data-bs-target="#windows"
+                >
+                  Windows
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  data-bs-toggle="tab"
+                  data-bs-target="#macos"
+                >
+                  macOS
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  data-bs-toggle="tab"
+                  data-bs-target="#android"
+                >
+                  Android
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  data-bs-toggle="tab"
+                  data-bs-target="#ios"
+                >
+                  iOS
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  data-bs-toggle="tab"
+                  data-bs-target="#linux"
+                >
+                  Linux
+                </button>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="container mt-5">
+          <div class="tab-content">
+            <!-- WINDOWS -->
+            <div class="tab-pane fade show active" id="windows">
+              <div class="row align-items-center">
+                <div class="col-md-3 text-center mb-3">
+                  <i class="bi bi-windows fs-1"></i>
+                </div>
+                <div class="col-md-9">
+                  <h3>Download eduVPN for Windows</h3>
+                  <p class="text-muted">
+                    Use the Windows app to connect to your institute or enjoy
+                    secure access to the internet.
+                  </p>
+                  <a
+                    href="https://app.eduvpn.org/windows/eduVPNClient_latest.exe"
+                    class="btn btn-lg btn-danger rounded-pill px-4 download-btn"
+                  >
+                    <i class="bi bi-download"></i> Download for Windows
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- MACOS -->
+            <div class="tab-pane fade" id="macos">
+              <div class="row align-items-center">
+                <div class="col-md-3 text-center mb-3">
+                  <i class="bi bi-apple fs-1"></i>
+                </div>
+                <div class="col-md-9">
+                  <h3>Download eduVPN for macOS</h3>
+                  <p class="text-muted">
+                    Securely connect to eduVPN on macOS devices.
+                  </p>
+                  <a
+                    href="https://apps.apple.com/app/eduvpn-client/id1317704208?mt=12"
+                    class="btn btn-lg btn-danger rounded-pill px-4 download-btn"
+                  >
+                    <i class="bi bi-download"></i> Download for macOS
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- ANDROID -->
+            <div class="tab-pane fade" id="android">
+              <div class="row align-items-center">
+                <div class="col-md-3 text-center mb-3">
+                  <i class="bi bi-android2 fs-1"></i>
+                </div>
+                <div class="col-md-9">
+                  <h3>Download eduVPN for Android</h3>
+                  <p class="text-muted">
+                    Install eduVPN from the Google Play Store.
+                  </p>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=nl.eduvpn.app"
+                    class="btn btn-lg btn-danger rounded-pill px-4 download-btn"
+                  >
+                    <i class="bi bi-google-play"></i> Get it on Google Play
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- IOS -->
+            <div class="tab-pane fade" id="ios">
+              <div class="row align-items-center">
+                <div class="col-md-3 text-center mb-3">
+                  <i class="bi bi-phone fs-1"></i>
+                </div>
+                <div class="col-md-9">
+                  <h3>Download eduVPN for iOS</h3>
+                  <p class="text-muted">
+                    Available on iPhone and iPad via the App Store.
+                  </p>
+                  <a
+                    href="https://apps.apple.com/app/eduvpn-client/id1292557340"
+                    class="btn btn-lg btn-danger rounded-pill px-4 download-btn"
+                  >
+                    <i class="bi bi-apple"></i> Download on App Store
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- LINUX -->
+            <div class="tab-pane fade" id="linux">
+              <div class="row align-items-center">
+                <div class="col-md-3 text-center mb-3">
+                  <i class="bi bi-terminal fs-1"></i>
+                </div>
+                <div class="col-md-9">
+                  <h3>Download eduVPN for Linux</h3>
+                  <p class="text-muted">
+                    eduVPN is available for most major Linux distributions.
+                  </p>
+                  <a
+                    href="https://docs.eduvpn.org/client/linux/"
+                    class="btn btn-lg btn-danger rounded-pill px-4 download-btn"
+                  >
+                    <i class="bi bi-download"></i> View Linux Packages
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container mt-5" id="downloadbutton" style="text-align: center; top: 10%;">
+        <a
+          href="https://www.eduvpn.org/client-apps/"
+          class="btn btn-primary btn-lg"
+          >Zu eduVPN</a
+        >
+      </div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/javascripts/script.js"></script>
+</html>

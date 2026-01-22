@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="top-nav">
+      <a class="navbar-brand" href="#" style="margin-left: 2%">ZIDD</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="./">Home</a>
+        </div>
+      </div>
+    </nav>
+    <div
+      class="container mt-5"
+      style="justify-content: center; align-items: center; display: flex"
+    >
+      <div
+        class="row justify-content-center"
+        style="width: 80%; text-align: center"
+      >
+        <h1>Download <%= title %></h1>
+        <div class="container mt-4">
+          <p>
+            Download winget command for Eclipse IDE:
+          </p>
+          <div class="card bg-dark text-success position-relative" style="height: 6vh;">
+            <div class="card-body font-monospace">
+              <pre id="vscodeCommand" style="margin: 0">
+$ winget install -e --id EclipseFoundation.Eclipse.Java
+          </pre
+              >
+              <button
+                class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2"
+                onclick="copyCommand(this.previousElementSibling)"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+                  <div class="container mt-4">
+          <p>
+            Download Homebrew command for Eclipse IDE:
+          </p>
+          <div class="card bg-dark text-success position-relative" style="height: 6vh;">
+            <div class="card-body font-monospace">
+              <pre id="vscodeCommand" style="margin: 0">
+$ brew install --cask eclipse-ide
+          </pre
+              >
+              <button
+                class="btn btn-sm btn-outline-light position-absolute top-0 end-0 m-2"
+                onclick="copyCommand(this.previousElementSibling)"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="container mt-5" id="downloadbutton">
+            <a
+              href="https://www.eclipse.org/downloads/"
+              class="btn btn-primary btn-lg"
+              >Zu Eclipse IDE</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/javascripts/script.js"></script>
+</html>

@@ -16,4 +16,17 @@ router.get('/eduvpn', function(req, res, next) {
 router.get('/docker', function(req, res, next) {
   res.render('docker', { title: 'Docker' });
 });
+
+router.get('/kubernetes', function(req, res, next) {
+  res.render('kubernetes', { title: 'Kubernetes' });
+});
+
+router.get('/moodle', function(req, res, next) {
+  res.render('moodle', { title: 'Moodle' });
+}); 
+
+router.get('/eclipse', function(req, res, next) {
+  res.render('eclipse', { title: 'Eclipse' });
+});
+
 module.exports = router;

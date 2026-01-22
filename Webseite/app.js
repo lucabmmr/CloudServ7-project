@@ -24,6 +24,9 @@ app.use('/users', usersRouter);
 app.use('/vscode', indexRouter);
 app.use('/eduvpn', indexRouter);
 app.use('/docker', indexRouter);
+app.use('/kubernetes', indexRouter);
+app.use('/moodle', indexRouter);
+app.use('/eclipse', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
