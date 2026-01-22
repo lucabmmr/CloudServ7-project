@@ -10,6 +10,7 @@ on:
 
 jobs:
   nodejs-docker-build-push:
+    name: NodeJS / Docker Build / Docker Push
     runs-on: ubuntu-latest
 
     steps:
