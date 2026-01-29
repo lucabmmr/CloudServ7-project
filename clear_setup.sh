@@ -14,11 +14,11 @@ helm uninstall velero -n velero
 # Deleting Kubernetes resources
 echo "Deleting Kubernetes resources..."
 kubectl delete -f ./manifests/deployment.yaml
-kubectl delete -f ./manifests/service.yaml
+# kubectl delete -f ./manifests/service.yaml
+
+# Probleme bei Loki und express
 
 # helm uninstall argocd -n argocd
 
-echo "Terraform destroying resources..."
-terraform destroy -auto-approve
+echo "Try 'terraform destroy -auto-approve' to remove all infrastructure created by Terraform."
 
-echo "All resources have been cleared."
