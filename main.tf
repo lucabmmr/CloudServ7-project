@@ -29,8 +29,8 @@ locals {
     flavor_name      = "m1.medium"
     system_user      = "ubuntu"
     floating_ip_pool = "ext_net"
-    #ssh_pubkey_file  = "~/.ssh/id_rsa.pub"
-    ssh_pubkey_file  = "~/.ssh/id_ed25519.pub"
+    ssh_pubkey_file  = "~/.ssh/id_rsa.pub"
+    #ssh_pubkey_file  = "~/.ssh/id_ed25519.pub"
     dns_server       = "10.33.16.100"
     rke2_version     = "v1.30.3+rke2r1"
 
