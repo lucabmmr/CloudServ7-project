@@ -8,3 +8,7 @@ notizen.txt
 .DS_Store
 /.terraform/*
 terraform.tfstate.backup
+.terraform.lock.hcl
+cloudserv7-k8s.rke2.yaml
+
+terraform.tfstate
