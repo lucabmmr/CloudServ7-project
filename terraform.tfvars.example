@@ -1,0 +1,7 @@
+# Beispiel tfvars Datei
+# Folgende Variablen sind erforderlich
+# Werte bitte ändern!
+
+username="Anmeldename"
+project="Projektname"
+password="SuperGeheimesPasswort"
