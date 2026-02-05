@@ -4,6 +4,13 @@ metadata:
   name: kube-prometheus-stack
   namespace: kube-system
 
+#
+# Anmeldename wird auf "admin" gesetzt
+# Passwort wird auf "grafana" gesetzt
+# Hardcoded für Demo-Zwecke (bei gebrauch bitte anpassen)
+# -> Zeile 23 und 24!
+#
+
 spec:
   chart: kube-prometheus-stack
   repo: https://prometheus-community.github.io/helm-charts
