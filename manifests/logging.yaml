@@ -4,6 +4,13 @@ metadata:
   name: loki-stack
   namespace: kube-system
 
+#
+# Anmeldename wird auf "admin" gesetzt
+# Passwort wird auf "grafana" gesetzt
+# Hardcoded für Demo-Zwecke (bei gebrauch bitte anpassen)
+# -> Zeile 23 und 24!
+#
+
 spec:
   chart: loki-stack
   repo: https://grafana.github.io/helm-charts
@@ -74,7 +81,7 @@ data:
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": ""
           },
           "gridPos": {
             "h": 7,
@@ -111,7 +118,7 @@ data:
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": ""
           },
           "gridPos": {
             "h": 9,
@@ -149,7 +156,7 @@ data:
         {
           "datasource": {
             "type": "loki",
-            "uid": "P8E80F9AEF21F6940"
+            "uid": ""
           },
           "gridPos": {
             "h": 13,
@@ -172,7 +179,7 @@ data:
             {
               "datasource": {
                 "type": "loki",
-                "uid": "P8E80F9AEF21F6940"
+                "uid": ""
               },
               "editorMode": "builder",
               "expr": "{namespace=\"kube-system\"} |= `error`",
