@@ -55,6 +55,9 @@ Reihenfolge beachten, teilweise wichtig aufgrund von Abhängigkeiten
 7. Ports von cloudserv7-k8s-net (Netzwerk) löschen
 8. cloudserv7-k8s-net löschen
 
+Notwendige Ansicht, bevor das nächste Mal terraform apply ausgeführt werden sollte:#
+
+
 ## manuelles Starten von argocd (vorübergehend)
 1. export KUBECONFIG="$PWD/cloudserv7-k8s.rke2.yaml"
 2. echo "KUBECONFIG set to $KUBECONFIG"
