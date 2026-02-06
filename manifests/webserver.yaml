@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/lukazieg/CloudServ7-Webserver.git
     targetRevision: Lena
-    path: .
+    path: k8s
 
   destination:
     server: https://kubernetes.default.svc
