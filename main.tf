@@ -184,3 +184,32 @@ terraform {
     }
   }
 }
+
+resource "null_resource" "argocd_install" {
+
+  depends_on = [
+    module.rke2
+  ]
+
+  provisioner "local-exec" {
+    interpreter = ["/bin/bash", "-c"]
+
+command = <<EOF
+set -e
+
+echo "=== Setting KUBECONFIG ==="
+export KUBECONFIG="$PWD/cloudserv7-k8s.rke2.yaml"
+echo "KUBECONFIG set to $KUBECONFIG"
+
+echo "=== Preparing install-argocd.sh ==="
+sed -i 's/\r$//' install-argocd.sh
+chmod +x install-argocd.sh
+
+echo "=== Installing Argo CD ==="
+./install-argocd.sh argocd
+
+echo "=== Argo CD installation finished ==="
+EOF
+
+  }
+}
