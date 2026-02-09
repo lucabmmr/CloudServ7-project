@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cloudserv7-root
+  name: cloud-controller
   namespace: argocd
 spec:
   project: default
