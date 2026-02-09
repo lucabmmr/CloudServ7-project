@@ -1,23 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: webserver
+  name: cloudserv7-root
   namespace: argocd
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/lukazieg/CloudServ7-Webserver.git
+    repoURL: https://github.com/lucabmmr/CloudServ7-project.git
     targetRevision: Lena
-    path: k8s
+    path: manifests/apps
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: webserver
+    namespace: argocd
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
