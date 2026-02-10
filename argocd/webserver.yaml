@@ -7,17 +7,15 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/lukazieg/CloudServ7-Webserver.git
+    repoURL: https://github.com/lucabmmr/CloudServ7-project.git
     targetRevision: Lena
-    path: k8s
+    path: manifests/velero
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: webserver
+    namespace: argocd
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-    - CreateNamespace=true
