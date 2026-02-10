@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/lucabmmr/CloudServ7-project.git
     targetRevision: Lena
-    path: manifests/velero
+    path: manifests/webserver
 
   destination:
     server: https://kubernetes.default.svc
