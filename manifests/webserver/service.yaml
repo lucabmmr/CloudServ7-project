@@ -1,12 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: webserver
-  namespace: webserver
+  name: express-web
 spec:
+  type: LoadBalancer
   selector:
-    app: webserver
+    app: express-web
   ports:
     - port: 80
       targetPort: 3000
-  type: ClusterIP
