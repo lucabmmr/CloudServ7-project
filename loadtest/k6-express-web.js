@@ -1,6 +1,6 @@
 import http from 'k6/http';
 
-const BASE_URL = __ENV.TARGET_URL;
+const BASE_URL = __ENV.TARGET_IP;
 
 export const options = {
   stages: [

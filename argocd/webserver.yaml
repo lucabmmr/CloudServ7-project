@@ -8,7 +8,7 @@ spec:
 
   source:
     repoURL: https://github.com/lucabmmr/CloudServ7-project.git
-    targetRevision: Lena
+    targetRevision: main
     path: manifests/webserver
 
   destination:

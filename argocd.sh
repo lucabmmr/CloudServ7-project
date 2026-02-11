@@ -1,3 +1,5 @@
+sed -i 's/\r$//' argocd.sh
+
 #!/usr/bin/env bash
 
 set -e
@@ -34,4 +36,8 @@ echo "Fertig!"
 
 kubectl get svc -n argocd
 
-$export TARGET_IP=$(kubectl get svc express-web -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+echo "Warte auf externe IP-Adresse des WebServers"
+
+sleep 150
+
+export TARGET_IP=$(kubectl get svc express-web -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
