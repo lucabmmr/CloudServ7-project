@@ -36,8 +36,10 @@ echo "Fertig!"
 
 kubectl get svc -n argocd
 
+sleep 30
+
 echo "Warte auf externe IP-Adresse des WebServers"
 
-sleep 150
+sleep 120
 
 export TARGET_IP=$(kubectl get svc express-web -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].ip}')

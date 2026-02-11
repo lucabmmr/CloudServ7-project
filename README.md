@@ -57,12 +57,13 @@ Reihenfolge beachten, teilweise wichtig aufgrund von Abhängigkeiten
 
 Notwendige Ansicht, bevor das nächste Mal terraform apply ausgeführt werden sollte:#
 
+## Starten von ArgoCD
+1. chmod +x argocd.sh
+2. ./argocd.sh
+3. IP-Adresse im Browser aufrufen und einloggen
 
-## manuelles Starten von argocd (vorübergehend)
-1. export KUBECONFIG="$PWD/cloudserv7-k8s.rke2.yaml"
-2. echo "KUBECONFIG set to $KUBECONFIG"
-3. chmod +x install-argocd.sh
-4. sed 's/\r$//' install-argocd.sh | bash -s argocd
-5. warten, bis Abschluss
-6. kubectl port-forward service/argocd-server -n argocd 8080:443
-7. neues Terminal: kubectl apply -f argocd/applications/cloudserv7-demo.yaml
+## Horizontal Pod Autoscaling (HPA) testen
+Terminal 1: k6 run loadtest/k6-express-web.js
+Terminal 2: kubectl get hpa -n argocd -w
+ggf. export TARGET_IP=$(kubectl get svc express-web -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+![alt text](https://github.com/lucabmmr/CloudServ7-project/bilder/HPA_Logging2.png)
