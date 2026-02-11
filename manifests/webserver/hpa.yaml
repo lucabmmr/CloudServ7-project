@@ -15,11 +15,11 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 15
+          averageUtilization: 10
   behavior:
     scaleDown:
-      stabilizationWindowSeconds: 20
+      stabilizationWindowSeconds: 10
       policies:
         - type: Percent
           value: 50
-          periodSeconds: 15
+          periodSeconds: 10
