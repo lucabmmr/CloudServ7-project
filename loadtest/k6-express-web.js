@@ -1,5 +1,7 @@
 import http from 'k6/http';
 
+const BASE_URL = __ENV.TARGET_URL;
+
 export const options = {
   stages: [
     { duration: '20s', target: 20 },
@@ -11,5 +13,5 @@ export const options = {
 };
 
 export default function () {
-  http.get('http://10.32.6.161');
+  http.get('http://' + BASE_URL);
 }

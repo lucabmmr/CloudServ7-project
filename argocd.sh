@@ -34,3 +34,5 @@ echo "==> Deployment abgeschlossen."
 echo "Port-Forward läuft mit PID: $PORT_FORWARD_PID"
 
 kubectl get svc -n argocd
+
+$export TARGET_IP=$(kubectl get svc express-web -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
