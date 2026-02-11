@@ -1,5 +1,3 @@
-sed -i 's/\r$//' argocd.sh
-
 #!/usr/bin/env bash
 
 set -e
