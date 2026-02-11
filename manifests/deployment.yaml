@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-web
+spec:
+  replicas: 1 # Anzahl der Pods
+  selector:
+    matchLabels:
+      app: express-web
+  template:
+    metadata:
+      labels:
+        app: express-web
+    spec:
+      containers:
+        - name: web
+          image: fdai7814/express-web:latest # Webserver-Image 
+          imagePullPolicy: IfNotPresent # Image wird nur gezogen, wenn es nicht lokal vorhanden ist
+          ports:
+            - containerPort: 3000 # Interner Port im Pod
