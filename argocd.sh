@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+echo "KUBECONFIG"
+export KUBECONFIG="$PWD/cloudserv7-k8s.rke2.yaml"
+
+if [[ ! -f "$KUBECONFIG" ]]; then
+  echo "Fehler: KUBECONFIG-Datei nicht gefunden!"
+  exit 1
+fi
+
+echo "Ausführungsrechte install-argocd.sh"
+chmod +x install-argocd.sh
+
+echo "install-argocd.sh ausführen"
+sed 's/\r$//' install-argocd.sh | bash -s argocd
+
+echo "==> Warte, bis Namespace argocd existiert..."
+until kubectl get namespace argocd >/dev/null 2>&1; do
+  sleep 2
+done
+
+echo "==> Warte, bis argocd-server Service verfügbar ist..."
+until kubectl get service argocd-server -n argocd >/dev/null 2>&1; do
+  sleep 2
+done
+
+echo "==> Wende argocd Konfiguration an..."
+kubectl apply -f argocd
+
+echo "==> Deployment abgeschlossen."
+echo "Port-Forward läuft mit PID: $PORT_FORWARD_PID"
+
+kubectl get svc -n argocd
