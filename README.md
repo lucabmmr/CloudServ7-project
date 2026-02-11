@@ -66,4 +66,4 @@ Notwendige Ansicht, bevor das nächste Mal terraform apply ausgeführt werden so
 Terminal 1: k6 run loadtest/k6-express-web.js
 Terminal 2: kubectl get hpa -n argocd -w
 ggf. export TARGET_IP=$(kubectl get svc express-web -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-![alt text](https://github.com/lucabmmr/CloudServ7-project/bilder/HPA_Logging2.png)
+![alt text](https://github.com/lucabmmr/CloudServ7-project/blob/main/bilder/HPA_Logging2.png)
