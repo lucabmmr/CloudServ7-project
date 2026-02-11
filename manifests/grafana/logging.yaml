@@ -1,15 +1,25 @@
+##############################################################
+###  Loki Stack mit Grafana Dashboard
+
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
   name: loki-stack
   namespace: kube-system
 
-#
+
+### Installiert Loki, Promtail und Grafana im Namespace "logging"
+### Grafana wird als LoadBalancer bereitgestellt, damit es von außen erreichbar ist
+### 
+# Wichtig:
 # Anmeldename wird auf "admin" gesetzt
 # Passwort wird auf "grafana" gesetzt
-# Hardcoded für Demo-Zwecke (bei gebrauch bitte anpassen)
-# -> Zeile 23 und 24!
-#
+# Hardcoded für Demo-Zwecke (bei gebrauch anpassen)
+# -> Zeile 33 und 34!
+### 
+### Loki hat 10 GiB Speicherplatz für die Persistenz der Daten
+### mit sidecar werden die Dashboards und Datasources automatisch in Grafana importiert (unten implementiert)
+
 
 spec:
   chart: loki-stack
@@ -24,9 +34,6 @@ spec:
       adminPassword: grafana
       service:
         type: LoadBalancer
-      persistence:
-        enabled: true
-        size: 10Gi
       sidecar:
         dashboards:
           enabled: true
@@ -45,6 +52,11 @@ spec:
     promtail:
       enabled: true
 ---
+##############################################################
+### Grafana Dashboard für Loki (ConfigMap)
+### Wichtig ist, dass das Label "grafana_dashboard" selben Wert hat wie "labelValue" 
+### ab Zeile 70 findet sich das Dashboard im JSON-Format, welches in Grafana importiert wird
+
 apiVersion: v1
 kind: ConfigMap
 metadata:

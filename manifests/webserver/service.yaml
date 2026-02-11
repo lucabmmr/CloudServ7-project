@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: express-web
+  name: express-web 
 spec:
-  type: LoadBalancer
+  type: LoadBalancer # OpenStack vergibt externe IP-Adresse
   selector:
-    app: express-web
+    app: express-web # Name des zugehörigen Pods
   ports:
-    - port: 80
-      targetPort: 3000
+    - port: 80 # Externer Port
+      targetPort: 3000 # Interner Port im Pod
