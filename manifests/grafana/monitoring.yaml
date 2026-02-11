@@ -1,0 +1,46 @@
+##############################################################
+###  Prometheus Stack mit Grafana Dashboard
+
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: kube-prometheus-stack
+  namespace: kube-system
+
+
+### Installiert Prometheus und Grafana im Namespace "monitoring"
+### Grafana wird als LoadBalancer bereitgestellt, damit es von außen erreichbar ist
+### 
+# Wichtig:
+# Anmeldename wird auf "admin" gesetzt
+# Passwort wird auf "grafana" gesetzt
+# Hardcoded für Demo-Zwecke (bei gebrauch anpassen)
+# -> Zeile 33 und 34!
+### 
+### Prometheus hat 10 GiB Speicherplatz für die Persistenz der Daten
+### 
+
+
+spec:
+  chart: kube-prometheus-stack
+  repo: https://prometheus-community.github.io/helm-charts
+  version: 80.2.0
+  targetNamespace: monitoring
+  createNamespace: true
+  valuesContent: |-
+    grafana:
+      enabled: true
+      adminUser: admin
+      adminPassword: grafana
+      service:
+        type: LoadBalancer
+
+    prometheus:
+      prometheusSpec:
+        retention: 30d
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              resources:
+                requests:
+                  storage: 10Gi

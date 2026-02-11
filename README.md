@@ -44,6 +44,25 @@ Manifests (Ordner):
 -> Logs von Pods und Nodes 
 -> Zentrale Log-Analyse
 
+## manuelles stoppen der Ressourcen
+Reihenfolge beachten, teilweise wichtig aufgrund von Abhängigkeiten
+1. terraform destroy
+2. Datenträger löschen
+3. Floating IPs freigeben
+4. Router löschen
+5. Sicherheitsgruppen löschen (außer default)
+6. Load Balancers löschen
+7. Ports von cloudserv7-k8s-net (Netzwerk) löschen
+8. cloudserv7-k8s-net löschen
+
+Notwendige Ansicht, bevor das nächste Mal terraform apply ausgeführt werden sollte:#
 
 
-
+## manuelles Starten von argocd (vorübergehend)
+1. export KUBECONFIG="$PWD/cloudserv7-k8s.rke2.yaml"
+2. echo "KUBECONFIG set to $KUBECONFIG"
+3. chmod +x install-argocd.sh
+4. sed 's/\r$//' install-argocd.sh | bash -s argocd
+5. warten, bis Abschluss
+6. kubectl port-forward service/argocd-server -n argocd 8080:443
+7. neues Terminal: kubectl apply -f argocd/applications/cloudserv7-demo.yaml
