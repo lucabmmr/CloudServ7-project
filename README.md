@@ -3,7 +3,6 @@ Cloud Services Projekt Gruppe 7: Zentraler dienst für installationen
 
 > [!TIP]
 > Keine abgabe von Doku -> Code wird abgegeben!
-Eine Readme mit beschreibung welche datei quasi was macht.
 
 ## Dateien
 
@@ -11,8 +10,11 @@ Eine Readme mit beschreibung welche datei quasi was macht.
 -> Legt fest, welche Instanzen mit welcher Spezifikation gestartet werden
 -> Definiert Worker und Controller
 
-> "terraform.tfvars" => (Lokal) Variablen für Terraform
--> OpenStack anmeldedaten
+> "terraform.tfvars.example" => Beispiel Variablen für Terraform
+-> Vor gebrauch datei Kopieren, ".example" entfernen und Variablen anpassen
+
+> "clear_setup.sh" => Versuch für einfaches Destroy Skript
+-> ignorieren (hatten nicht genug zeit Fehler zu beheben)
 
 Manifests (Ordner):
 
@@ -39,10 +41,16 @@ Manifests (Ordner):
 
 >"monitoring.yaml" => Prometheus Monitoring
 -> Metriken und Cluster Überwachung
+-> Kommentare Beachten!
+-> Unbedingt vor benutzung hart codiertes Passwort und anmeldename für Grafana aendern!
 
 >"logging.yaml" => Loki Logging
 -> Logs von Pods und Nodes 
 -> Zentrale Log-Analyse
+-> beinhaltet eigenes erstelltes Dashboard
+-> Kommentare Beachten!
+-> Unbedingt vor benutzung hart codiertes Passwort und anmeldename für Grafana aendern!
+
 
 ## manuelles stoppen der Ressourcen
 Reihenfolge beachten, teilweise wichtig aufgrund von Abhängigkeiten
