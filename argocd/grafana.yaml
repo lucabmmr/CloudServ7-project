@@ -1,21 +1,21 @@
-apiVersion: argoproj.io/v1alpha1
+apiVersion: argoproj.io/v1alpha1 
 kind: Application
 metadata:
   name: grafana
   namespace: argocd
 spec:
-  project: default
+  project: default # Standardprojekt
 
   source:
-    repoURL: https://github.com/lucabmmr/CloudServ7-project.git
-    targetRevision: main
-    path: manifests/grafana
+    repoURL: https://github.com/lucabmmr/CloudServ7-project.git # Gitrepository, aus dem Ressourcen gezogen werden sollen
+    targetRevision: main # Branch
+    path: manifests/grafana # Ordner
 
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
 
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+    automated: # synchronisiert automatisch mit Git-Repo
+      prune: true # löscht Ressourcen, die im Git-Repo nicht (mehr) sind
+      selfHeal: true # manuelle Änderungen im Cluster werden zurück auf den Stand des Git-Repos gebracht (Single Source of Truth)
