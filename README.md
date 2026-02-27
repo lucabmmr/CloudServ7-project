@@ -3,7 +3,6 @@ Cloud Services Projekt Gruppe 7: Zentraler dienst für installationen
 
 > [!TIP]
 > Keine abgabe von Doku -> Code wird abgegeben!
-Eine Readme mit beschreibung welche datei quasi was macht.
 
 ## Dateien
 
@@ -11,8 +10,11 @@ Eine Readme mit beschreibung welche datei quasi was macht.
 -> Legt fest, welche Instanzen mit welcher Spezifikation gestartet werden
 -> Definiert Worker und Controller
 
-> "terraform.tfvars" => (Lokal) Variablen für Terraform
--> OpenStack anmeldedaten
+> "terraform.tfvars.example" => Beispiel Variablen für Terraform
+-> Vor gebrauch datei Kopieren, ".example" entfernen und Variablen anpassen
+
+> "clear_setup.sh" => Versuch für einfaches Destroy Skript
+-> ignorieren (hatten nicht genug zeit Fehler zu beheben)
 
 Manifests (Ordner):
 
@@ -39,10 +41,16 @@ Manifests (Ordner):
 
 >"monitoring.yaml" => Prometheus Monitoring
 -> Metriken und Cluster Überwachung
+-> Kommentare Beachten!
+-> Unbedingt vor benutzung hart codiertes Passwort und anmeldename für Grafana aendern!
 
 >"logging.yaml" => Loki Logging
 -> Logs von Pods und Nodes 
 -> Zentrale Log-Analyse
+-> beinhaltet eigenes erstelltes Dashboard
+-> Kommentare Beachten!
+-> Unbedingt vor benutzung hart codiertes Passwort und anmeldename für Grafana aendern!
+
 
 ## manuelles stoppen der Ressourcen
 Reihenfolge beachten, teilweise wichtig aufgrund von Abhängigkeiten
@@ -70,3 +78,16 @@ Terminal 2: export KUBECONFIG="$PWD/cloudserv7-k8s.rke2.yaml"
 kubectl get hpa -n argocd -w
 ggf. export TARGET_IP=$(kubectl get svc express-web -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 ![Logging](bilder/HPA_Logging2.png)
+
+## Probleme und Lösungen
+### Monitoring und Logging
+Bei dem Grafana, welches mit Loki verbunden war, haben wir mit 
+```
+kubectl get secret --namespace logging -l app.kubernetes.io/component=admin-secret -o jsonpath="{.items[0].data.admin-password}" | base64 --decode ; echo
+```
+kein Passwort, sondern einen Fehler bekommen. Bei Monitoring ging alles seltsamer weise.
+-> Gelöst haben wir das, indem wir in den HelmCharts von Monitoring und Logging das Passwort und ein Benutzername selbst festgelegt haben. Das ist natürlich weniger sicher wenn es Hartcodiert ist und sollte (wie in den Kommentar bereits erwähnt) dringend geändert werden vor der Benutzung!
+
+Zudem hatten wir das Problem mit dem eigenen Dashboard, dass das Dashboard an sich zwar beim Start immer geladen hat, aber die Felder alle immer "No Data" angezeigt haben.
+Das lag daran, dass die JSON, die das Dashboard definiert und in der ConfigMap in Logging gespeicht wurde, direkt von Grafana exportiert wurde und die UIDs bei der Datasource falsch waren. Diese Ändern sich!
+-> Daher haben wir das Problem einfach gelöst, indem wir sämliche UID-Felder von der Datasource in der JSON leer lassen. Grafana regelt dann den rest.
