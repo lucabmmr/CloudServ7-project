@@ -74,9 +74,13 @@ Notwendige Ansicht, bevor das nächste Mal terraform apply ausgeführt werden so
 
 ## Horizontal Pod Autoscaling (HPA) testen
 Terminal 1: k6 run loadtest/k6-express-web.js
+
 Terminal 2: export KUBECONFIG="$PWD/cloudserv7-k8s.rke2.yaml"
+
 kubectl get hpa -n argocd -w
+
 ggf. export TARGET_IP=$(kubectl get svc express-web -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+
 ![Logging](bilder/HPA_Logging2.png)
 
 ## Probleme und Lösungen
@@ -91,3 +95,4 @@ kein Passwort, sondern einen Fehler bekommen. Bei Monitoring ging alles seltsame
 Zudem hatten wir das Problem mit dem eigenen Dashboard, dass das Dashboard an sich zwar beim Start immer geladen hat, aber die Felder alle immer "No Data" angezeigt haben.
 Das lag daran, dass die JSON, die das Dashboard definiert und in der ConfigMap in Logging gespeicht wurde, direkt von Grafana exportiert wurde und die UIDs bei der Datasource falsch waren. Diese Ändern sich!
 -> Daher haben wir das Problem einfach gelöst, indem wir sämliche UID-Felder von der Datasource in der JSON leer lassen. Grafana regelt dann den rest.
+ 
