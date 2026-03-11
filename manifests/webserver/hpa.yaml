@@ -1,5 +1,6 @@
+# Achtung! Kein realistischer HPA! Nur zu Demonstrationszwecken, sehr aggresiv für schnell sichtbare Änderungen  
 apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
+kind: HorizontalPodAutoscaler # HPA-Ressource in Kubernetes
 metadata:
   name: express-web-hpa
 spec:
@@ -7,27 +8,27 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: express-web
-  minReplicas: 1
-  maxReplicas: 5
+  minReplicas: 1 # minimale Anzahl Pods
+  maxReplicas: 5 # maximale Anzahl Pods
   metrics:
     - type: Resource
-      resource:
-        name: cpu
+      resource: # Container-Ressourcenanforderungen eines Pods 
+        name: cpu # hier: CPU-Auslastung
         target:
           type: Utilization
-          averageUtilization: 40
+          averageUtilization: 40 # Prozent bis zum Hochskalieren
   behavior:
     scaleUp:
-      stabilizationWindowSeconds: 5
-      selectPolicy: Max
+      stabilizationWindowSeconds: 5 # Sicht auf / Vergleich mit den letzten x Sekunden 
+      selectPolicy: Max # maximal aggressiv
       policies:
         - type: Pods
-          value: 1
-          periodSeconds: 15
+          value: 1 # in jedem Durchgang nur um 1 Pod hochskalieren
+          periodSeconds: 15 # Zeitintervall, in dem hochskaliert wird
     scaleDown:
-      stabilizationWindowSeconds: 5
+      stabilizationWindowSeconds: 5 # gleiche Bedeutungen wie beim Hochskalieren, aber Runterskalieren
       selectPolicy: Max
       policies:
         - type: Pods
-          value: 1
-          periodSeconds: 15
+          value: 1 
+          periodSeconds: 15 

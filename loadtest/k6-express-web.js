@@ -1,7 +1,13 @@
+// HTTP-Modul von k6 wird importiert
 import http from 'k6/http';
 
+// URL unserer Webseite, um Zugriffe darauf simulieren zu können
 const BASE_URL = __ENV.TARGET_IP;
 
+// Erklärung: 
+// duration: Zeit, in der auf x targets hochskaliert werden soll
+// target: Anzahl der (gleichzeitigen) virtuellen User, die erreicht werden soll
+// stages: werden nacheinander ausgeführt
 export const options = {
   stages: [
     { duration: '20s', target: 20 },
@@ -12,6 +18,7 @@ export const options = {
   ],
 };
 
+// Aufruf jedes virtuellen Users
 export default function () {
   http.get('http://' + BASE_URL);
 }
