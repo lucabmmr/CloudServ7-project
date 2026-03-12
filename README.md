@@ -1,8 +1,6 @@
 # CloudServ7-project
 Cloud Services Projekt Gruppe 7: Zentraler dienst für installationen
 
-> [!TIP]
-> Keine abgabe von Doku -> Code wird abgegeben!
 
 ## Dateien
 
